@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  appellation: MyString
+  color: MyString
+  sparkling: false
+  price: 9.99
+  vintage: 1
+  notes: MyText
+
+two:
+  name: MyString
+  appellation: MyString
+  color: MyString
+  sparkling: false
+  price: 9.99
+  vintage: 1
+  notes: MyText
