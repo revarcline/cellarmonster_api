@@ -1,6 +1,8 @@
 class CreateBottles < ActiveRecord::Migration[6.1]
   def change
     create_table :bottles do |t|
+      t.belongs_to :country
+      t.belongs_to :producer
       t.string :name
       t.string :appellation
       t.string :color
