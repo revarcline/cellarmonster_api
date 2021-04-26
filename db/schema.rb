@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_144953) do
   end
 
   create_table "bottles", force: :cascade do |t|
+    t.bigint "country_id"
+    t.bigint "producer_id"
     t.string "name"
     t.string "appellation"
     t.string "color"
@@ -38,20 +40,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_144953) do
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "bottles_countries", id: false, force: :cascade do |t|
-    t.bigint "bottle_id", null: false
-    t.bigint "country_id", null: false
-    t.index ["bottle_id"], name: "index_bottles_countries_on_bottle_id"
-    t.index ["country_id"], name: "index_bottles_countries_on_country_id"
-  end
-
-  create_table "bottles_producers", id: false, force: :cascade do |t|
-    t.bigint "bottle_id", null: false
-    t.bigint "producer_id", null: false
-    t.index ["bottle_id"], name: "index_bottles_producers_on_bottle_id"
-    t.index ["producer_id"], name: "index_bottles_producers_on_producer_id"
+    t.index ["country_id"], name: "index_bottles_on_country_id"
+    t.index ["producer_id"], name: "index_bottles_on_producer_id"
   end
 
   create_table "bottles_varietals", id: false, force: :cascade do |t|

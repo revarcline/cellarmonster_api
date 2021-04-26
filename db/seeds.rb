@@ -17,11 +17,31 @@ countries = ['United States', 'France', 'Italy', 'Austria', 'Germany',
              'Argentina', 'South Africa', 'Chile', 'Urugay', 'Australia',
              'New Zealand', 'Spain', 'Greece', 'Lebanon']
 
-varietals.each { |varietal| Varietal.find_or_create_by(varietal) }
-countries.each { |country| Country.find_or_create_by(country) }
+bottles = [
+  { name: 'margeaux' }
+]
+
+varietals.each { |varietal| Varietal.find_or_create_by(name: varietal) }
+countries.each { |country| Country.find_or_create_by(name: country) }
 
 ('a'..'z').each do |letter|
   (1..9).each do |number|
     Bin.find_or_create_by(location: "#{letter}#{number}")
   end
+end
+
+bottles.each do |bottle|
+  Bottle.create(
+    name: bottle.name,
+    sparkling: bottle.sparkling,
+    appellation: bottle.appellation,
+    color: bottle.color,
+    price: bottle.price,
+    vintage: bottle.vintage,
+    notes: bottle.notes,
+    varietals: bottle.varietals.each { |varietal| Varietal.find_or_create_by(name: varietal) },
+    bins: bottle.bins.each { |bin| Bin.find_by(name: bin) },
+    country: Country.find_or_create_by(name: bottle.country),
+    producer: Producer.find_or_create_by(producer: bottle.producer)
+  )
 end
