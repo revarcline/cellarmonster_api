@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_144953) do
+ActiveRecord::Schema.define(version: 2021_04_26_213640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 2021_04_26_144953) do
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sku"
+    t.integer "inventory"
+    t.integer "total_sold", default: 0
+    t.string "format"
+    t.string "region"
     t.index ["country_id"], name: "index_bottles_on_country_id"
     t.index ["producer_id"], name: "index_bottles_on_producer_id"
   end
