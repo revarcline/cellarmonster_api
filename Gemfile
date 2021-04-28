@@ -7,7 +7,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'devise-jwt'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'jsonapi-serializer'
 gem 'jwt'
 gem 'pg', '~> 1.1'
