@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'current_user', to: 'current_user#index'
   resources :bins
   resources :producers
   resources :countries
@@ -9,9 +10,8 @@ Rails.application.routes.draw do
     sign_in: 'login',
     sign_out: 'logout',
     registration: 'signup'
-  },
-                     controllers: {
-                       sessions: 'users/sessions',
-                       registrations: 'users/registrations'
-                     }
+  }, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 end
