@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users', to: 'users#index'
   get 'current_user', to: 'current_user#index'
   resources :bins
   resources :producers
