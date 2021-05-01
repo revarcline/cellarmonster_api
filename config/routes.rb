@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'search/index'
   get 'users', to: 'users#index'
   get 'current_user', to: 'current_user#index'
+  get 'search/:query', to: 'search#index'
   resources :bins
   resources :producers
   resources :countries
