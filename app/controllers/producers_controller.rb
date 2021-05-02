@@ -6,7 +6,7 @@ class ProducersController < ApplicationController
 
   def show
     producer = Producer.find(params[:id])
-    bottles = producer.bottles
-    render json: BottleSerializer.new(bottles).serializable_hash.to_json
+    bottles = generate_bottles(producer)
+    render json: bottles
   end
 end

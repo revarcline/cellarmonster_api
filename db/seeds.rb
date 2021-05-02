@@ -51,7 +51,7 @@ bottles = [
     format: '750 mL'
   },
   {
-    name: "'Le Mont' Premiere Trie MoelleuxDark, dense and very closed now, this has a tremendous core of crushed plum, linzer torte and blackberry confiture waiting in reserve. Ample singed cedar and mesquite, warm paving stone and black tea notes lurk in the background and glide through the finish. Features serious grip, but wonderful integration. Should cruise in the cellar. Best from 2016 through 2035.",
+    name: "'Le Mont' Premiere Trie Moelleux",
     sparkling: false,
     color: 'White',
     appellation: 'Vouvray',
@@ -110,7 +110,7 @@ bottles = [
     varietals: ['Macabeo', 'Xarel·lo', 'Parellada'],
     bins: %w[h1 h2 h3],
     inventory: 9,
-    country: 'France',
+    country: 'Spain',
     producer: 'Segura Viudas',
     format: '1.5 L'
   },
@@ -151,7 +151,7 @@ bottles = [
     sparkling: false,
     color: 'Red',
     appellation: 'Margeaux',
-    region: 'Rhone',
+    region: 'Bordeaux',
     price: '435.00',
     vintage: 2014,
     notes: 'A valentine of dark chocolate and roses melded with the aromatics of licorice, blackberry and cocoa create a complex perfume. The wine is elegant with a refined character, supple tannins and a burst of fresh cassis, cherry and cocoa that builds on the palate. The most striking quality to this wine is the clarity of fruit in the finish. While this vintage lacks the weight and density found in vintages like 2009 and 2010, the length is quite similar. Produced from a blend of 90% Cabernet Sauvignon, 5% Merlot, 3% Cabernet Franc and 2% Petit Verdot, the wine reached 13.2% alcohol with a pH of 3.68. This represents 36% of the harvest',
