@@ -1,7 +1,9 @@
 class SearchController < ApplicationController
   def index
     results = flat_results(PgSearch.multisearch(params[:query]).map(&:searchable))
-    render json: BottleSerializer.new(results).serializable_hash.to_json
+    result_hash = BottleSerializer.new(results).serializable_hash
+    result_hash[:resource_name] = params[:query]
+    render json: result_hash.to_json
   end
 
   protected
