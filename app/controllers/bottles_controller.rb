@@ -5,7 +5,7 @@ class BottlesController < ApplicationController
   end
 
   def show
-    bottle = Bottle.find(params[:id])
+    bottle = [Bottle.find(params[:id])]
     render json: BottleSerializer.new(bottle).serializable_hash.to_json
   end
 end
