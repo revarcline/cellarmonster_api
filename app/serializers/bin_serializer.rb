@@ -1,4 +1,4 @@
 class BinSerializer
   include JSONAPI::Serializer
-  attributes :location, :id
+  attributes :name, :id
 end
