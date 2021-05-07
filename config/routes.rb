@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   get 'current_user', to: 'current_user#index'
   get 'search/:query', to: 'search#index'
+  get 'user_orders/:user_id', to: 'orders#user_orders'
   resources :bins
   resources :producers
   resources :countries
