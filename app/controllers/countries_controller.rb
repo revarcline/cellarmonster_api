@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
   def index
-    countries = Country.all
+    countries = Country.order(:name)
     render json: CountrySerializer.new(countries).serializable_hash.to_json
   end
 

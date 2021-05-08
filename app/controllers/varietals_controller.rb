@@ -1,6 +1,6 @@
 class VarietalsController < ApplicationController
   def index
-    varietals = Varietal.all
+    varietals = Varietal.order(:name)
     render json: VarietalSerializer.new(varietals).serializable_hash.to_json
   end
 

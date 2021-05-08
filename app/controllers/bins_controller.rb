@@ -1,6 +1,6 @@
 class BinsController < ApplicationController
   def index
-    bins = Bin.all
+    bins = Bin.order(:name)
     render json: BinSerializer.new(bins).serializable_hash.to_json
   end
 

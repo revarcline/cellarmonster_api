@@ -1,6 +1,6 @@
 class ProducersController < ApplicationController
   def index
-    producers = Producer.all
+    producers = Producer.order(:name)
     render json: ProducerSerializer.new(producers).serializable_hash.to_json
   end
 
