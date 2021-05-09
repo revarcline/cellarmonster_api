@@ -11,6 +11,7 @@ class BottlesController < ApplicationController
 
   def create
     bottle = Bottle.create(bottle_params)
+    puts bottle if bottle.save
     render json: BottleSerializer.new(bottle).serializable_hash.to_json
   end
 
@@ -18,7 +19,7 @@ class BottlesController < ApplicationController
 
   def bottle_params
     params.require(:bottle).permit(:name,
-                                   :other_country,
+                                   :new_country,
                                    :new_producer,
                                    :appellation,
                                    :region,
@@ -31,11 +32,11 @@ class BottlesController < ApplicationController
                                    :sku,
                                    :inventory,
                                    :format,
+                                   :country_id,
+                                   :producer_id,
                                    {
-                                     country: {},
-                                     producer: {},
-                                     varietals: {},
-                                     bins: {}
+                                     varietals: [:id],
+                                     bins: [:id]
                                    })
   end
 end
