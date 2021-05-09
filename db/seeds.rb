@@ -178,15 +178,43 @@ bottles = [
     producer: 'Broadbent',
     format: '1 L'
   }
-
 ]
+
+users = [
+  {
+    name: 'Admin',
+    role: 'admin',
+    email: 'admin@example.com',
+    password: 'password'
+  },
+  {
+    name: 'Server One',
+    role: 'server',
+    email: 'server_one@example.com',
+    password: 'password'
+  },
+  {
+    name: 'Server Two',
+    role: 'server',
+    email: 'server_two@example.com',
+    password: 'password'
+  },
+  {
+    name: 'Runner',
+    role: 'runner',
+    email: 'runner@example.com',
+    password: 'password'
+  }
+]
+
+users.each { |user| User.create(user) }
 
 varietals.each { |varietal| Varietal.find_or_create_by(name: varietal) }
 countries.each { |country| Country.find_or_create_by(name: country) }
 
 ('a'..'z').each do |letter|
   (1..9).each do |number|
-    Bin.find_or_create_by(location: "#{letter}#{number}")
+    Bin.find_or_create_by(name: "#{letter}#{number}")
   end
 end
 
@@ -201,7 +229,7 @@ bottles.each do |bottle|
     vintage: bottle[:vintage],
     notes: bottle[:notes],
     varietals: bottle[:varietals].map { |varietal| Varietal.find_or_create_by(name: varietal) },
-    bins: bottle[:bins].map { |bin| Bin.find_or_create_by(location: bin) },
+    bins: bottle[:bins].map { |bin| Bin.find_or_create_by(name: bin) },
     inventory: bottle[:inventory],
     country: Country.find_or_create_by(name: bottle[:country]),
     producer: Producer.find_or_create_by(name: bottle[:producer]),
