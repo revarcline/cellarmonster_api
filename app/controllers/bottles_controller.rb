@@ -1,6 +1,6 @@
 class BottlesController < ApplicationController
   def index
-    bottles = Bottle.all
+    bottles = Bottle.order(:sku)
     render json: BottleSerializer.new(bottles).serializable_hash.to_json
   end
 
@@ -11,6 +11,12 @@ class BottlesController < ApplicationController
 
   def create
     bottle = Bottle.create(bottle_params)
+    render json: BottleSerializer.new(bottle).serializable_hash.to_json
+  end
+
+  def update
+    bottle = Bottle.find(params[:id])
+    bottle.update(bottle_params)
     render json: BottleSerializer.new(bottle).serializable_hash.to_json
   end
 
