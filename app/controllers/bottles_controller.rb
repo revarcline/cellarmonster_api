@@ -20,6 +20,11 @@ class BottlesController < ApplicationController
     render json: BottleSerializer.new(bottle).serializable_hash.to_json
   end
 
+  def delete
+    bottle = Bottle.find(params[:id])
+    bottle.destroy
+  end
+
   protected
 
   def bottle_params
