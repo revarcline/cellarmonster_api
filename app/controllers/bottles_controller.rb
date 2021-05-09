@@ -11,7 +11,6 @@ class BottlesController < ApplicationController
 
   def create
     bottle = Bottle.create(bottle_params)
-    puts bottle if bottle.save
     render json: BottleSerializer.new(bottle).serializable_hash.to_json
   end
 
