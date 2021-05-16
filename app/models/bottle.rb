@@ -5,7 +5,7 @@ class Bottle < ApplicationRecord
   belongs_to :producer
   has_and_belongs_to_many :varietals
   has_and_belongs_to_many :bins
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :users, through: :orders
   accepts_nested_attributes_for :country, :producer, :varietals, :bins
 
