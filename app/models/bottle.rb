@@ -13,14 +13,14 @@ class Bottle < ApplicationRecord
     return if country_name == ''
 
     new = Country.find_or_create_by(name: country_name)
-    update(country: new)
+    self.country = new
   end
 
   def new_producer=(producer_name)
     return if producer_name == ''
 
     new = Producer.find_or_create_by(name: producer_name)
-    update(producer: new)
+    self.producer = new
   end
 
   def new_varietal=(varietal_names)
@@ -28,8 +28,8 @@ class Bottle < ApplicationRecord
 
     new_varietals = varietal_names.split(',').map(&:strip)
     new_varietals.each do |varietal|
-      new = Producer.find_or_create_by(name: varietal)
-      update(varietals: varietals.concat(new))
+      new = Varietal.find_or_create_by(name: varietal)
+      varietals << new
     end
   end
 end

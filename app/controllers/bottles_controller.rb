@@ -10,13 +10,20 @@ class BottlesController < ApplicationController
   end
 
   def create
-    bottle = Bottle.create(bottle_params)
+    bottle = Bottle.new(bottle_params)
+    bottle.new_country = params[:new_country] unless params[:new_country].blank?
+    bottle.new_producer = params[:new_producer] unless params[:new_producer].blank?
+    bottle.new_varietal = params[:new_varietal] unless params[:new_varietal].blank?
+    bottle.save
     render json: BottleSerializer.new(bottle).serializable_hash.to_json
   end
 
   def update
     bottle = Bottle.find(params[:id])
     bottle.update(bottle_params)
+    bottle.new_country = params[:new_country] unless params[:new_country].blank?
+    bottle.new_producer = params[:new_producer] unless params[:new_producer].blank?
+    bottle.new_varietal = params[:new_varietal] unless params[:new_varietal].blank?
     render json: BottleSerializer.new(bottle).serializable_hash.to_json
   end
 
@@ -29,11 +36,8 @@ class BottlesController < ApplicationController
 
   def bottle_params
     params.require(:bottle).permit(:name,
-                                   :new_country,
-                                   :new_producer,
                                    :appellation,
                                    :region,
-                                   :new_varietal,
                                    :color,
                                    :sparkling,
                                    :price,
@@ -44,6 +48,9 @@ class BottlesController < ApplicationController
                                    :format,
                                    :country_id,
                                    :producer_id,
+                                   :new_country,
+                                   :new_producer,
+                                   :new_varietal,
                                    {
                                      varietals: [:id],
                                      bins: [:id]

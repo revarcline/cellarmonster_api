@@ -21,9 +21,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    params[:user].delete(:password) if params[:user][:password].blank?
+    super
+  end
 
   # DELETE /resource
   # def destroy
