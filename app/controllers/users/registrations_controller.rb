@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
+  before_action :authorize_admin
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -20,16 +21,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  # need to determine resource from params
+
+  #
   # PUT /resource
   def update
     params[:user].delete(:password) if params[:user][:password].blank?
     super
   end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    user = User.find_by(email: params[:user][:email])
+    user.destroy
+    render json: { message: 'deleted user' }
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -61,6 +66,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def authorize_admin
+    return if current_user.role == 'admin'
+
+    render json: { error: 'must be admin' }
+  end
 
   def respond_with(resource, _opts = {})
     if resource.persisted?
