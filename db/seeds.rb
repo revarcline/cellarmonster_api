@@ -8,14 +8,10 @@
 
 varietals = ['Chardonnay', 'Cabernet Sauvignon', 'Cabernet Franc', 'Merlot',
              'Grenache', 'Syrah', 'Mouvedre', 'Malbec', 'Sauvignon Blanc',
-             'Pinot Noir', 'Pinot Gris', 'Syrah', 'Zinfandel', 'Viognier',
-             'Riesling', 'Sangiovese', 'Tempranillo', 'Petite Sirah',
-             'Nebbiolo', 'Gamay', 'Cinsault', 'Semillon', 'Chenin Blanc',
+             'Pinot Noir', 'Zinfandel', 'Cinsault',
              'Gruner Veltliner', 'Albarino', 'Carignan']
 
-countries = ['United States', 'France', 'Italy', 'Austria', 'Germany',
-             'Argentina', 'South Africa', 'Chile', 'Urugay', 'Australia',
-             'New Zealand', 'Spain', 'Greece', 'Lebanon', 'Portugal', 'Croatia']
+countries = ['United States', 'France', 'Austria', 'Spain', 'Lebanon']
 
 bottles = [
   {
