@@ -26,14 +26,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #
   # PUT /resource
   def update
-    params[:user].delete(:password) if params[:user][:password].blank?
-    super
+    user = User.find(params[:user][:user_id])
+    params[:user].delete(:user_id)
+    user.update(update_params)
+    render json: { message: 'user updated' }
   end
 
   def destroy
-    user = User.find_by(email: params[:user][:email])
+    user = User.find(params[:user])
     user.destroy
-    render json: { message: 'deleted user' }
+    render json: { message: "deleted user #{params[:user]}" }
   end
 
   # GET /resource/cancel
@@ -45,6 +47,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def update_params
+    params[:user].permit(%i[user_id role name email])
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -54,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[name role])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name role user_id])
   end
 
   # The path used after sign up.
